@@ -1,0 +1,107 @@
+
+/* === Theme system (light/dark) ========================================== */
+/* Default: follow system preference, then overridden by [data-theme] attr */
+:root{
+  /* Light theme (default) */
+  --bg:#f7f9fc;
+  --panel:#ffffff;
+  --text:#0f172a;
+  --muted:#5b6577;
+  --accent:#2155ff;
+  --accent2:#0fbfbf;
+  --border:rgba(0,0,0,.08);
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#1e2430;
+    --panel:#2b3243;
+    --text:#f0f3f7;
+    --muted:#a9b4c2;
+    --accent:#6ca0ff;
+    --accent2:#40e0d0;
+    --border:rgba(255,255,255,.12);
+  }
+}
+/* Force light */
+:root[data-theme="light"]{
+  --bg:#f7f9fc;
+  --panel:#ffffff;
+  --text:#0f172a;
+  --muted:#5b6577;
+  --accent:#2155ff;
+  --accent2:#0fbfbf;
+  --border:rgba(0,0,0,.08);
+}
+/* Force dark (soft) */
+:root[data-theme="dark"]{
+  --bg:#1e2430;
+  --panel:#2b3243;
+  --text:#f0f3f7;
+  --muted:#a9b4c2;
+  --accent:#6ca0ff;
+  --accent2:#40e0d0;
+  --border:rgba(255,255,255,.12);
+}
+/* ======================================================================= */
+
+
+/* ====== site.css — Stili comuni + Tema dark/light con switch ====== */
+
+/* Tema di default: dark-soft */
+:root{
+  --bg:#1e2430;
+  --panel:#2b3243;
+  --text:#f0f3f7;
+  --muted:#a9b4c2;
+  --accent:#6ca0ff;
+  --accent2:#40e0d0;
+  --border:rgba(255,255,255,.08);
+}
+/* Tema chiaro */
+:root.light{
+  --bg:#f5f7fb;
+  --panel:#ffffff;
+  --text:#111111;
+  --muted:#555555;
+  --accent:#0066cc;
+  --accent2:#009688;
+  --border:rgba(0,0,0,.1);
+}
+
+/* Base */
+html,body{background:var(--bg); color:var(--text); margin:0; padding:0;}
+a{color:var(--accent)}
+.w3-card, .w3-panel{background:var(--panel) !important; color:var(--text) !important; border:1px solid var(--border)}
+.hero-gradient{
+  background: radial-gradient(1100px 520px at 90% -10%, var(--accent2,.15), transparent 60%),
+              radial-gradient(900px 500px at -10% 90%, var(--accent,.18), transparent 60%);
+}
+.brand-title{letter-spacing:.5px}
+.accent-chip{background: rgba(108,160,255,.15); border:1px solid rgba(108,160,255,.35); color:var(--accent)}
+.code-chip{background: rgba(64,224,208,.12); border:1px solid rgba(64,224,208,.35); color:var(--accent2)}
+.nav-active{border-bottom:3px solid var(--accent)}
+footer a{color:var(--muted)}
+.grid{display:grid; gap:16px}
+.grid.cards{grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));}
+.round-xl{border-radius:18px}
+.btn{
+  display:inline-block; padding:10px 16px; border-radius:12px; border:1px solid var(--border);
+  background:linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+}
+.btn:hover{border-color: rgba(255,255,255,.25)}
+.small{font-size:.95rem; color:var(--muted)}
+hr{border:0; border-top:1px solid var(--border)}
+.topbar{background:rgba(24,30,45,.85); backdrop-filter: blur(8px)}
+.w3-dark-grey{background:#1f2330 !important; color:#e6e9ef !important}
+.hidden{display:none !important}
+
+/* Switch button */
+.theme-toggle{
+  cursor:pointer;
+  padding:6px 10px;
+  border-radius:10px;
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--border);
+  color:var(--text);
+}
+.theme-toggle:hover{background:rgba(255,255,255,.15)}
