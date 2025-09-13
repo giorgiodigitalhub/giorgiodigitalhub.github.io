@@ -1,0 +1,125 @@
+
+/* ======================= site.css — tema light azzurrino & dark blu profondo ======================= */
+/* Sistema temi: di default segue il sistema; lo switch imposta [data-theme="light"|"dark"] su <html> */
+
+/* ------ Tema chiaro (azzurrino pastello) ------ */
+:root{
+  --bg:#eaf4fb;        /* sfondo: azzurrino molto chiaro */
+  --panel:#ffffff;     /* pannelli/cards */
+  --text:#0f1f33;      /* testo: blu scuro piacevole */
+  --muted:#5c6f82;     /* testo attenuato */
+  --accent:#2a7bff;    /* accento blu */
+  --accent2:#00bcd4;   /* accento turchese */
+  --border:rgba(0,0,0,.08);
+  /* Navbar / Button (light) */
+  --nav-bg:#dceafc;    /* navbar blu pastello */
+  --btn-bg:#e3f2fd;    /* pulsante azzurrino tenue */
+  --btn-bg-hover:#d6ebfb;
+  --btn-border:#2a7bff;
+}
+
+/* Preferenza di sistema: dark */
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#162b4d;       /* sfondo: blu profondo, non notte */
+    --panel:#203a63;    /* pannelli/cards */
+    --text:#f2f6fb;     /* testo chiaro con tono freddo */
+    --muted:#aebed6;    /* testo attenuato */
+    --accent:#5ca9ff;   /* accento azzurro luminoso */
+    --accent2:#36d1ff;  /* accento turchese/blue-cyan */
+    --border:rgba(255,255,255,.15);
+    /* Navbar / Button (dark) */
+    --nav-bg:rgba(22, 43, 77, .88);
+    --btn-bg:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    --btn-bg-hover:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+    --btn-border:rgba(255,255,255,.22);
+  }
+}
+
+/* Forza tema light via toggle */
+:root[data-theme="light"]{
+  --bg:#eaf4fb;
+  --panel:#ffffff;
+  --text:#0f1f33;
+  --muted:#5c6f82;
+  --accent:#2a7bff;
+  --accent2:#00bcd4;
+  --border:rgba(0,0,0,.08);
+  --nav-bg:#b3eafc;
+  --btn-bg:#e3f2fd;
+  --btn-bg-hover:#d6ebfb;
+  --btn-border:#2a7bff;
+}
+
+/* Forza tema dark blu profondo via toggle */
+:root[data-theme="dark"]{
+  --bg:#162b4d;
+  --panel:#203a63;
+  --text:#f2f6fb;
+  --muted:#aebed6;
+  --accent:#5ca9ff;
+  --accent2:#36d1ff;
+  --border:rgba(255,255,255,.15);
+  --nav-bg:rgba(22, 43, 77, .88);
+  --btn-bg:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+  --btn-bg-hover:linear-gradient(180deg, rgba(255,255,255,.10), rgba(255,255,255,.04));
+  --btn-border:rgba(255,255,255,.22);
+}
+
+/* ------ Base ------ */
+html,body{background:var(--bg); color:var(--text);}
+a{color:var(--accent)}
+hr{border:0; border-top:1px solid var(--border)}
+.small{font-size:.95rem; color:var(--muted)}
+.brand-title{letter-spacing:.5px}
+
+/* ------ Card / Panel ------ */
+.w3-card, .w3-panel{background:var(--panel) !important; color:var(--text) !important; border:1px solid var(--border)}
+.round-xl{border-radius:18px}
+
+/* ------ Hero ------ */
+.hero-gradient{
+  background: radial-gradient(1100px 520px at 90% -10%, rgba(54,209,255,.18), transparent 60%),
+              radial-gradient(900px 500px at -10% 90%, rgba(92,169,255,.18), transparent 60%);
+  border:1px solid var(--border);
+}
+
+/* ------ Navbar ------ */
+.topbar{
+  background: var(--nav-bg) !important;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.topbar .w3-bar-item{ color: var(--text) !important; }
+.topbar .w3-button:hover{ background: rgba(0,0,0,.04) !important; }
+.nav-active{ border-bottom:3px solid var(--accent) }
+
+/* ------ Bottoni ------ */
+.btn{
+  display:inline-block; padding:10px 16px; border-radius:12px;
+  border:1px solid var(--btn-border);
+  background: var(--btn-bg);
+  color: var(--text);
+  transition: .15s ease;
+}
+.btn:hover{ background: var(--btn-bg-hover); transform: translateY(-1px) }
+.btn:active{ transform: translateY(0) }
+
+/* ------ Chip ------ */
+.accent-chip{background: rgba(92,169,255,.14); border:1px solid rgba(92,169,255,.35); color:#0f1f33}
+:root[data-theme="dark"] .accent-chip{color:#dbe9ff}
+.code-chip{background: rgba(54,209,255,.12); border:1px solid rgba(54,209,255,.35); color:#0f1f33}
+:root[data-theme="dark"] .code-chip{color:#dbfdff}
+
+/* ------ Griglie ------ */
+.grid{display:grid; gap:16px}
+.grid.cards{grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));}
+
+/* ------ Code blocks ------ */
+.w3-dark-grey{background:#111827 !important; color:#e5e7eb !important}
+:root[data-theme="dark"] .w3-dark-grey{background:#1f2a44 !important; color:#eef3f8 !important}
+
+/* ------ Utility ------ */
+footer a{color:var(--muted)}
+.hidden{display:none !important}
